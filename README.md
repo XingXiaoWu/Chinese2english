@@ -11,3 +11,7 @@
 ```
 sudo pyinstaller --windowed --onefile --clean --noconfirm index.py
 ```
+
+产物[下载](https://github.com/XingXiaoWu/Chinese2english/releases)
+
+效果图![img](./imgs/img.gif)
