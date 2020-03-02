@@ -10,6 +10,7 @@
 
 ```
 sudo pyinstaller --windowed --onefile --clean --noconfirm index.py
+sudo pyinstaller --clean --noconfirm --windowed --onefile index.spec
 ```
 
 产物[下载](https://github.com/XingXiaoWu/Chinese2english/releases)
