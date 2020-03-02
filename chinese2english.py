@@ -10,7 +10,7 @@ class Chinese2English:
         new_name_first = self.translator.translate(portion[0])
         return new_name_first
 
-    def space2_(self, file_name):
+    def space2_(self, file_name, connector):
         string_list = file_name.split()
         result = ''
         # 这里可以直接用 str_1.join(str2_list)
@@ -20,13 +20,13 @@ class Chinese2English:
             if i == 0:
                 result = tmp
             else:
-                result = result + "_" + tmp
-        result = result.replace('_@', '@')
-        result = result.replace('@_', '@')
-        result = result.replace('-', '_')
+                result = result + connector + tmp
+        result = result.replace(connector+'@', '@')
+        result = result.replace('@'+connector, '@')
+        result = result.replace('-', connector)
         return result
 
-    def chinese2english(self, path):
+    def chinese2english(self, path, prefix, connector):
         # 判断路径是否为空
         if path == "":
             return False
@@ -36,11 +36,11 @@ class Chinese2English:
                 portion = os.path.splitext(file_name)
                 # 中文转英文
                 tmpName = self.translate(portion)
-                # 空格转为下划线_, 文件首字母小写，下划线后第一个字母转大写
-                new_name_first = self.space2_(tmpName)
+                # 空格转为连接符, 文件首字母小写，下划线后第一个字母转大写
+                new_name_first = self.space2_(tmpName, connector)
                 new_name = new_name_first + portion[1]
                 # 拼接路径
                 file_name = path + "/" + file_name
-                new_name = path + "/" + new_name
+                new_name = path + "/" + prefix + connector + new_name
                 os.rename(file_name, new_name)
         return True
