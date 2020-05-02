@@ -3,7 +3,14 @@ from PySide2 import QtCore, QtWidgets, QtGui
 from translate import Translator
 from chinese2english import Chinese2English
 from fileedit import FileEdit
-
+import os, sys
+ 
+# 获取路径
+# def getPath(fileName):
+	# path = os.path.join(os.path.dirname(sys.argv[0]), fileName)
+	# return path
+# Chinese2English = getPath('chinese2english')
+# FileEdit = getPath('fileedit')
 
 class MyWidget(QtWidgets.QWidget):
     def __init__(self):
@@ -82,7 +89,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.prefixTextFiled)
 
 
-
+    # 转换入口
     def magic(self):
         self.resultLabel.setText("当前状态：转换中。。。")
         translator = Translator(from_lang="chinese", to_lang="english")
@@ -98,7 +105,6 @@ class MyWidget(QtWidgets.QWidget):
     def initcheckbox(self):
         self.changelast = QtWidgets.QCheckBox()
         self.initcheckbox()
-
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
